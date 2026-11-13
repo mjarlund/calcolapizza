@@ -56,10 +56,22 @@ Remove `CNAME` if you are serving the page from a different domain; Pages reads 
 
 ## Editing it
 
-`index.html` holds everything: the markup, the CSS, the calculator, the three string tables and the URL
-state. The calculator itself is a handful of pure functions; the strings live in a `STRINGS` object keyed by
-language, and the input/output elements are identified by `id`. There is no test suite — verification is
-done in a browser against the Italian original, using the same inputs, and comparing every output.
+Four files, no build step, loaded as classic scripts so opening `index.html` from disk still works:
+
+| file | holds |
+| --- | --- |
+| `index.html` | the markup only, plus the two script tags and the stylesheet link |
+| `styles.css` | all styling, including the `@media print` rules for the one-page kitchen sheet |
+| `strings.js` | the `STRINGS` object — every user-visible string, keyed by language (`en`, `da`, `de`) |
+| `app.js` | the calculator, the URL state, `localStorage`, and the DOM wiring |
+
+Translating or rewording the page means touching `strings.js` and nothing else; every language must define
+the same keys, and a missing one renders the key itself rather than failing silently. The calculator's maths
+lives in `compute()` in `app.js` and is a handful of pure functions; the input/output elements are addressed
+by `id`.
+
+There is no test suite — verification is done in a browser against the Italian original, using the same
+inputs, and comparing every output.
 
 When changing the maths, check the result against <https://laconfraternitadellapizza.net/calcolapizza/> with
 identical inputs before and after. That comparison is the test.
