@@ -46,7 +46,7 @@
         <input id="fatPerLitre" type="number" min="0" max="150" step="1" value="0" inputmode="decimal">
       </div>
 
-      <h2 style="margin-top:22px" data-i18n="secLeaven"></h2>
+      <h2 class="section-heading" data-i18n="secLeaven"></h2>
 
       <div class="row">
         <label for="hours"><span data-i18n="hours"></span><span class="hint" data-i18n="hoursHint"></span></label>
@@ -66,7 +66,7 @@
         <span><span data-i18n="pan"></span><span class="hint" data-i18n="panHint"></span></span>
       </div>
 
-      <h2 style="margin-top:22px" data-i18n="secCarry"></h2>
+      <h2 class="section-heading" data-i18n="secCarry"></h2>
 
       <div class="row">
         <label for="carryOver"><span data-i18n="carry"></span><span class="hint" data-i18n="carryHint"></span></label>
@@ -74,8 +74,8 @@
       </div>
 
       <fieldset>
-        <div class="row" style="grid-template-columns: 1fr; padding-bottom:0">
-          <label style="margin-bottom:6px"><span data-i18n="vigour"></span><span class="hint" data-i18n="vigourHint"></span></label>
+        <div class="row row-stacked">
+          <label class="row-label"><span data-i18n="vigour"></span><span class="hint" data-i18n="vigourHint"></span></label>
           <div class="seg">
             <label><input type="radio" name="vigour" value="1"><span data-i18n="sluggish"></span></label>
             <label><input type="radio" name="vigour" value="2" checked><span data-i18n="normal"></span></label>
@@ -84,10 +84,9 @@
         </div>
       </fieldset>
 
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:16px">
-        <span class="hint savedLine" data-i18n="saved" style="font-size:0.76rem"></span>
-        <button type="button" id="resetBtn" data-i18n="reset"
-          style="font:inherit;font-size:0.78rem;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0;flex:none"></button>
+      <div class="io-foot">
+        <span class="hint savedLine" data-i18n="saved"></span>
+        <button type="button" id="resetBtn" class="reset-link" data-i18n="reset"></button>
       </div>
     </section>
 
@@ -124,13 +123,12 @@
     <p data-i18n="weightNote"></p>
   </footer>
 </main>
-<dialog id="copyDialog" style="border:1px solid var(--line);border-radius:14px;padding:16px;max-width:min(640px,94vw);background:var(--panel);color:var(--ink)">
-  <form method="dialog" style="display:flex;flex-direction:column;gap:10px">
-    <strong id="copyDialogTitle" style="font-size:0.95rem"></strong>
-    <textarea id="copyDialogText" readonly rows="7"
-      style="font:inherit;font-size:0.85rem;width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);resize:vertical"></textarea>
-    <div style="display:flex;justify-content:flex-end;gap:8px">
-      <button value="close" id="copyDialogClose" class="linkish" style="font-size:0.82rem;padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer"></button>
+<dialog id="copyDialog">
+  <form method="dialog" class="dialog-form">
+    <strong id="copyDialogTitle" class="dialog-title"></strong>
+    <textarea id="copyDialogText" readonly rows="7"></textarea>
+    <div class="dialog-actions">
+      <button value="close" id="copyDialogClose" class="linkish dialog-close"></button>
     </div>
   </form>
 </dialog>
