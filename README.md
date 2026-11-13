@@ -37,8 +37,9 @@ The default inputs are those of the Italian original: one 200 g ball, 65 % hydra
 
 Open `index.html` in a browser. That is the whole installation.
 
-The live copy is at <https://pizza.mjarlund.dk>. To publish your own, point GitHub Pages (or any static
-host) at the repository root — the file at the root is the app.
+The live copy is at <https://pizza.mjarlund.dk>, served from this repository's `index.html` through a
+symlink on the host, so a change committed here is live on the next request. To publish your own, point
+GitHub Pages (or any static host) at the repository root — the file at the root is the app.
 
 ## Editing it
 
