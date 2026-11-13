@@ -61,7 +61,7 @@ Four files, no build step, loaded as classic scripts so opening `index.html` fro
 | file | holds |
 | --- | --- |
 | `index.html` | the markup only, plus the two script tags and the stylesheet link |
-| `styles.css` | all styling, including the `@media print` rules for the one-page kitchen sheet |
+| `styles.css` | the design tokens in `:root` (colour, type, space, shape, print) and every rule, including the `@media print` sheet |
 | `strings.js` | the `STRINGS` object — every user-visible string, keyed by language (`en`, `da`, `de`) |
 | `app.js` | the calculator, the URL state, `localStorage`, and the DOM wiring |
 
@@ -69,6 +69,12 @@ Translating or rewording the page means touching `strings.js` and nothing else; 
 the same keys, and a missing one renders the key itself rather than failing silently. The calculator's maths
 lives in `compute()` in `app.js` and is a handful of pure functions; the input/output elements are addressed
 by `id`.
+
+Styling goes through tokens: no rule carries a raw colour, size or gap. Colours are `--color-*`, the type
+scale is `--text-*`, spacing is a 2px rhythm (`--space-1` … `--space-12`), shape is `--radius-*`, and the
+print sheet uses its own `--print-*` set in mm and pt because paper is measured in physical units. Change a
+token, not the rule — and if a new value is genuinely needed, extend the scale rather than dropping a
+literal into a rule.
 
 There is no test suite — verification is done in a browser against the Italian original, using the same
 inputs, and comparing every output.
