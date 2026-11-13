@@ -35,11 +35,24 @@ The default inputs are those of the Italian original: one 200 g ball, 65 % hydra
 
 ## Running it
 
-Open `index.html` in a browser. That is the whole installation.
+Open `index.html` in a browser. That is the whole installation — no server, no build step, no dependencies.
 
-The live copy is at <https://pizza.mjarlund.dk>, served from this repository's `index.html` through a
-symlink on the host, so a change committed here is live on the next request. To publish your own, point
-GitHub Pages (or any static host) at the repository root — the file at the root is the app.
+## Deploying
+
+The live copy is <https://pizza.mjarlund.dk>, served by **GitHub Pages** from `main` at the repository root:
+push to `main` and the site rebuilds in about half a minute. Nothing else runs anywhere.
+
+To publish your own copy:
+
+1. **Settings → Pages → Source:** `Deploy from a branch`, branch `main`, folder `/`.
+2. **Custom domain:** enter your domain. This writes the `CNAME` file already in this repository; edit that
+   file instead of the setting if you prefer the change to live in git.
+3. **DNS:** point the domain at Pages with a `CNAME` record to `<user>.github.io`. Keep that record
+   **DNS-only** if your DNS provider is Cloudflare — proxying it makes GitHub fail domain verification and
+   the certificate stops renewing.
+4. **Enforce HTTPS** once GitHub has issued the certificate (usually minutes).
+
+Remove `CNAME` if you are serving the page from a different domain; Pages reads it on every build.
 
 ## Editing it
 
