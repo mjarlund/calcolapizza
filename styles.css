@@ -163,7 +163,20 @@ fieldset { border: 0; margin: 0; padding: 0; }
 }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
 .seg label:has(input:checked) { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent); }
-.seg[data-inert="true"] { opacity: 0.45; }
+/* No leftover dough means the liveliness choice has no effect. Fading the
+   control to 45 % made the labels unreadable on the light background, so it is
+   marked neutral instead: dashed borders, no accent, full-contrast text. */
+.seg[data-inert="true"] label {
+  border-style: dashed;
+  color: var(--color-muted);
+  background: transparent;
+  cursor: not-allowed;
+}
+.seg[data-inert="true"] label:has(input:checked) {
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+}
 
 .check { display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-5) 0 var(--space-1); }
 .check input { margin-top: var(--space-1); accent-color: var(--color-accent); }
